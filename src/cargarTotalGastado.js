@@ -1,6 +1,7 @@
 import { parseISO } from "date-fns";
 import { isThisMonth } from "date-fns/isThisMonth";
 
+// actualiza el total gastado
 const cargarTotalGastado = () => {
   const total = document.getElementById("total-gastado");
   const gastos = JSON.parse(window.localStorage.getItem("gastos"));

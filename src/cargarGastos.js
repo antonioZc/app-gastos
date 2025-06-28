@@ -1,8 +1,10 @@
+// librería para formatear la fecha
 import { format } from "date-fns";
 import { parseISO } from "date-fns";
 import { es } from "date-fns/locale";
 import { isThisMonth } from "date-fns/isThisMonth";
 
+// funcion para cargar los gastos en el HTML
 const cargarGastos = () => {
   const gastos = JSON.parse(window.localStorage.getItem("gastos"));
   const contenedorGastos = document.querySelector("#gastos .gastos__lista");
@@ -13,17 +15,20 @@ const cargarGastos = () => {
   });
 
   contenedorGastos.innerHTML = "";
+  // comprobamos si hay gastos almacenados si no se muestra un msj
   if (gastos) {
     if (mensajeGastos.classList.contains("gastos__mensaje--active")) {
       mensajeGastos.classList.remove("gastos__mensaje--active");
     }
 
+    // filtramos los gastos que fueron hechos en el mes actual
     const gastosDelMes = gastos.filter((gasto) => {
       if (isThisMonth(parseISO(gasto.fecha))) {
         return gasto;
       }
     });
 
+    // cargamos los gastos del mes en el html
     gastosDelMes.forEach((gasto) => {
       const plantilla = ` <div class="gasto" data-id="${gasto.id}">
 							<div class="gasto__info">
