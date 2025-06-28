@@ -15,7 +15,7 @@ const cargarGastos = () => {
   });
 
   contenedorGastos.innerHTML = "";
-  // comprobamos si hay gastos almacenados si no se muestra un msj
+  // comprobamos si hay gastos almacenados si no se muestra un msj s
   if (gastos) {
     if (mensajeGastos.classList.contains("gastos__mensaje--active")) {
       mensajeGastos.classList.remove("gastos__mensaje--active");
